@@ -1,0 +1,17 @@
+<h1>Log in</h1>
+<% if flash[:error] %>
+  <div>
+    <%= flash[:error] %>
+  </div>
+  <% flash.clear %>
+<% end %>
+
+<%= form_with(model: @user, url: login_path) do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %><br>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %><br>
+  
+  <%= form.submit "Log in" %>
+<% end %>

@@ -7,8 +7,17 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
   </head>
-
+  <div>
+    <!-- Dynamic logout/login/signup -->
+    <% if logged_in? %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Log In", login_path %>
+    <% end %>
+  </div>
   <body>
     <%= yield %>
   </body>
