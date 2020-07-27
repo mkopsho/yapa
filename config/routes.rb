@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  get '/', to: 'sessions#home'
   resources :tasks
   resources :lists
   resources :groups
   resources :teams
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
