@@ -31,8 +31,14 @@ ActiveRecord::Schema.define(version: 2020_07_27_155606) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
+    t.string "label"
+    t.boolean "is_complete?"
+    t.integer "user_id"
+    t.integer "list_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_tasks_on_list_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -52,4 +58,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_155606) do
 
   add_foreign_key "groups", "teams"
   add_foreign_key "groups", "users"
+  add_foreign_key "tasks", "lists"
+  add_foreign_key "tasks", "users"
 end
