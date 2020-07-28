@@ -6,15 +6,18 @@
   <% flash.clear %>
 <% end %>
 
-<%= form_with(model: @user) do |form| %>
-  <%= form.label :username %>
-  <%= form.text_field :username %><br>
+<%= form_with(model: @team) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
 
-  <%= form.label :email %>
-  <%= form.email_field :email %><br>
+  <%= form.label :description %>
+  <%= form.text_area :description %><br>
 
-  <%= form.label :password %>
-  <%= form.password_field :password %><br>
+  Add existing users to your team:
+  <div>
+    <%= form.collection_select(:user_id, User.all, :id, :username, :prompt => true) %>
+  </div>
+  <br>
   
   <%= form.submit "Create team" %>
 <% end %>

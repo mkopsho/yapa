@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_07_28_145112) do
 
-  create_table "groups", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "team_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["team_id"], name: "index_groups_on_team_id"
-    t.index ["user_id"], name: "index_groups_on_user_id"
-  end
-
   create_table "labels", force: :cascade do |t|
     t.string "name"
     t.integer "list_id"
@@ -37,6 +28,16 @@ ActiveRecord::Schema.define(version: 2020_07_28_145112) do
     t.string "status", default: "Not started"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.string "category"
+    t.integer "user_id"
+    t.integer "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -66,10 +67,10 @@ ActiveRecord::Schema.define(version: 2020_07_28_145112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "groups", "teams"
-  add_foreign_key "groups", "users"
   add_foreign_key "labels", "lists"
   add_foreign_key "labels", "tasks"
+  add_foreign_key "memberships", "teams"
+  add_foreign_key "memberships", "users"
   add_foreign_key "tasks", "lists"
   add_foreign_key "tasks", "users"
 end

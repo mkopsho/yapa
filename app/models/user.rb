@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :groups
-  has_many :teams, through: :groups
+  has_many :memberships
+  has_many :teams, through: :memberships
   has_many :tasks
   has_many :lists, through: :tasks
 

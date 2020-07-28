@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :tasks
   resources :labels
-  resources :groups
+  resources :memberships
   resources :teams
   resources :users, only: [:new, :show, :update]
 end
