@@ -9,6 +9,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    binding.pry
     @list = List.new(list_params)
     if @list.save!
       redirect_to list_path(@list)
@@ -30,6 +31,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:summary, :description, :user_id, :team_id, tasks_attributes: [:summary, :assignee])
+    params.require(:list).permit(:summary, :description, :team_id, tasks_attributes: [:summary, :assignee])
   end
 end

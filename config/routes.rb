@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :labels
   resources :memberships
   resources :teams
-  resources :users, only: [:new, :show, :update]
+  resources :users
 end

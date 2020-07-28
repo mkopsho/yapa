@@ -7,7 +7,7 @@
   <%= form.label :description %>
   <%= form.text_area :description %>
 </div><br>
-  (Optional) Create a starting task for this list:
+  Create a starting task for this list:
 <div>
   <%= form.fields_for(:tasks) do |tasks_attributes| %>
     <%= tasks_attributes.label :summary %>
@@ -16,6 +16,11 @@
     <%= tasks_attributes.label :assignee %>
     <%= tasks_attributes.text_field :assignee %><br>
   <% end %>
+</div>
+  (Optional) Add a team to this list:
+<div>
+  <%= form.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %><br>
+</div>
   
   <%= form.submit "Create list" %>
 <% end %>

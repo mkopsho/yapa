@@ -1,2 +1,8 @@
 <h1>User show page</h1>
-<h2>Your memberships</h2>
+<% if logged_in? %>
+  <h2>Build your team!</h2>
+  <%= link_to "Make a new team", new_team_path%><br>
+  <h2>Get working!</h2>
+  <%= link_to "Make a new list", new_list_path %><br>
+  <%= link_to "Make a new task", new_task_path %>
+<% end %>

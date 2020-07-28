@@ -12,12 +12,6 @@
 
   <%= form.label :description %>
   <%= form.text_area :description %><br>
-
-  Add existing users to your team:
-  <div>
-    <%= form.collection_select(:user_id, User.all, :id, :username, :prompt => true) %>
-  </div>
-  <br>
   
   <%= form.submit "Create team" %>
 <% end %>

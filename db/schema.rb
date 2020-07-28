@@ -26,8 +26,12 @@ ActiveRecord::Schema.define(version: 2020_07_28_145112) do
     t.string "summary"
     t.text "description"
     t.string "status", default: "Not started"
+    t.integer "user_id"
+    t.integer "team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_lists_on_team_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -69,6 +73,8 @@ ActiveRecord::Schema.define(version: 2020_07_28_145112) do
 
   add_foreign_key "labels", "lists"
   add_foreign_key "labels", "tasks"
+  add_foreign_key "lists", "teams"
+  add_foreign_key "lists", "users"
   add_foreign_key "memberships", "teams"
   add_foreign_key "memberships", "users"
   add_foreign_key "tasks", "lists"
