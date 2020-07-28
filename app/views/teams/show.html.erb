@@ -1,6 +1,13 @@
 <h1><%= @team.name %> show page</h1>
 <h2>Roster</h2>
+<ul>
+  <% @team.users.each do |member| %>
+  <li><%= link_to user.username, user_path(member) %></li>
+  <% end %>
+</ul>
 <h2>Lists</h2>
-<% @team.lists.each do |list| %>
-  <%= link_to list.name, list_path(list) %>
-<% end %>
+<ul>
+  <% @team.lists.each do |list| %>
+    <li><%= link_to list.summary, list_path(list) %></li>
+  <% end %>
+</ul>

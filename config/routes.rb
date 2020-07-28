@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
-  resources :labels
   resources :memberships
   resources :teams
   resources :users

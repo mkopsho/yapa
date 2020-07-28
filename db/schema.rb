@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_145112) do
-
-  create_table "labels", force: :cascade do |t|
-    t.string "name"
-    t.integer "list_id"
-    t.integer "task_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id"], name: "index_labels_on_list_id"
-    t.index ["task_id"], name: "index_labels_on_task_id"
-  end
+ActiveRecord::Schema.define(version: 2020_07_27_155606) do
 
   create_table "lists", force: :cascade do |t|
     t.string "summary"
@@ -71,12 +61,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_145112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "labels", "lists"
-  add_foreign_key "labels", "tasks"
-  add_foreign_key "lists", "teams"
-  add_foreign_key "lists", "users"
   add_foreign_key "memberships", "teams"
   add_foreign_key "memberships", "users"
-  add_foreign_key "tasks", "lists"
-  add_foreign_key "tasks", "users"
 end

@@ -4,8 +4,8 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.string :summary
       t.string :assignee
       t.boolean :is_complete?, default: false
-      t.references :user, null: true, foreign_key: true
-      t.references :list, null: true, foreign_key: true
+      t.belongs_to :user
+      t.belongs_to :list
 
       t.timestamps
     end

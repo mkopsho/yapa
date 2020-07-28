@@ -1,0 +1,14 @@
+<h1>Edit List</h1>
+<%= form_with(model: @list) do |form| %>
+<div>
+  <%= form.label :summary %>
+  <%= form.text_field :summary %><br>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %><br>
+
+  <%= form.label :team %>
+  <%= form.collection_select(:team_id, Team.all, :id, :name) %>
+</div><br>
+  <%= form.submit "Edit list" %>
+<% end %>

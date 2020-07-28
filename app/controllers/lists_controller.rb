@@ -9,7 +9,6 @@ class ListsController < ApplicationController
   end
 
   def create
-    binding.pry
     @list = List.new(list_params)
     if @list.save!
       redirect_to list_path(@list)
@@ -22,10 +21,24 @@ class ListsController < ApplicationController
     @list = List.find_by(id: params[:id])
   end
 
-  def update
+  def edit
+    @list = List.find_by(id: params[:id])
   end
 
-  def delete
+  def update
+    @list = List.find_by(id: params[:id])
+    if @list.update(list_params)
+      redirect_to list_path(@list)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @list = List.find_by(id: params[:id])
+    @list.destroy
+    flash[:notice] = "List deleted."
+    redirect_to lists_path
   end
 
   private

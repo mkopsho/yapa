@@ -1,11 +1,4 @@
 <h1>Create a team</h1>
-<% if flash[:error] %>
-  <div>
-    <%= flash[:error] %>
-  </div>
-  <% flash.clear %>
-<% end %>
-
 <%= form_with(model: @team) do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %><br>
