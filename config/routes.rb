@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   
   get '/signup', to: 'users#new'
 
+  resources :teams do
+    resources :lists, only: [:new, :index]
+  end
+
   resources :lists do
     resources :tasks, only: [:new, :index]
   end
 
   resources :tasks
   resources :memberships
-  resources :teams
   resources :users
 end

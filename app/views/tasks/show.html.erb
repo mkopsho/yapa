@@ -1,5 +1,9 @@
 <h1>Task show page</h1>
+<div>
+  Summary: <%= @task.summary %><br>
+  Assignee: <%= @task.assignee %><br>
+  List: <%= link_to @task.list.summary, list_path(@task.list) %>
+</div><br>
 
-Summary: <%= @task.summary %><br>
-Assignee: <%= @task.assignee %><br>
-List: <%= link_to @task.list.summary, list_path(@task.list) %>
+<%= link_to "Edit task details", edit_task_path(@task) %><br>
+<%= link_to "Delete this task", task_path(@task), method: :delete %><br>

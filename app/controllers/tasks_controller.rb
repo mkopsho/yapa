@@ -26,10 +26,24 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
   end
 
-  def update
+  def edit
+    @task = Task.find_by(id: params[:id])
   end
 
-  def delete
+  def update
+    @task = Task.find_by(id: params[:id])
+    if @task.update(task_params)
+      redirect_to task_path(@task)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @task = Task.find_by(id: params[:id])
+    @task.destroy
+    flash[:notice] = "Task deleted."
+    redirect_to tasks_path
   end
 
   private

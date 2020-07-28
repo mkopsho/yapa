@@ -4,10 +4,12 @@
   <% @team.users.each do |member| %>
   <li><%= link_to user.username, user_path(member) %></li>
   <% end %>
+  <%= link_to "Add users", edit_team_path(@team) %>
 </ul>
 <h2>Lists</h2>
 <ul>
   <% @team.lists.each do |list| %>
     <li><%= link_to list.summary, list_path(list) %></li>
   <% end %>
+  <%= link_to "Add a list", new_list_path %> <!-- Make nested! -->
 </ul>
