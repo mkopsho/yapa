@@ -1,4 +1,4 @@
 class Label < ApplicationRecord
-  belongs_to :list
-  belongs_to :task
+  belongs_to :list, optional: true
+  belongs_to :task, optional: true
 end

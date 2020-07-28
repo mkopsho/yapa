@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_155525) do
+ActiveRecord::Schema.define(version: 2020_07_28_145112) do
 
   create_table "groups", force: :cascade do |t|
     t.integer "user_id"
@@ -21,12 +21,33 @@ ActiveRecord::Schema.define(version: 2020_07_27_155525) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.integer "list_id"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_labels_on_list_id"
+    t.index ["task_id"], name: "index_labels_on_task_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_complete?"
+    t.integer "user_id"
+    t.integer "list_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_tasks_on_list_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -46,4 +67,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_155525) do
 
   add_foreign_key "groups", "teams"
   add_foreign_key "groups", "users"
+  add_foreign_key "labels", "lists"
+  add_foreign_key "labels", "tasks"
+  add_foreign_key "tasks", "lists"
+  add_foreign_key "tasks", "users"
 end
