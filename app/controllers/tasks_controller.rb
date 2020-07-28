@@ -4,11 +4,16 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
-    @task.build_list
+    if @list = List.find_by(id: params[:list_id]) 
+      @task = Task.new(list_id: params[:list_id])
+    else
+      @task = Task.new
+      @task.build_list
+    end
   end
 
   def create
+    binding.pry
     @task = Task.new(task_params)
     @task.user_id = session[:user_id]
     if @task.save!
@@ -25,6 +30,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:summary, :assignee, :list_id, list_attributes: [:summary, :description])
+    params.require(:task).permit(:summary, :assignee, :list_id, list_attributes: [:summary, :description, :id])
   end
 end

@@ -9,3 +9,5 @@ Task List:
     <li><%= link_to task.summary, task_path(task) %> <%= task.assignee %></li>
   </ul>
   <% end %>
+  <br>
+<%= link_to "Add a task to this list", new_list_task_path(params[:id]) %>
