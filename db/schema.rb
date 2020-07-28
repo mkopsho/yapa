@@ -32,16 +32,17 @@ ActiveRecord::Schema.define(version: 2020_07_28_145112) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "name"
+    t.string "summary"
     t.text "description"
-    t.string "status"
+    t.string "status", default: "Not started"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_complete?"
+    t.string "summary"
+    t.string "assignee"
+    t.boolean "is_complete?", default: false
     t.integer "user_id"
     t.integer "list_id"
     t.datetime "created_at", precision: 6, null: false

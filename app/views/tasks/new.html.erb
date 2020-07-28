@@ -1,0 +1,26 @@
+<h1>Make a new task</h1>
+<%= form_with(model: @task) do |form| %>
+<div>
+  <%= form.label :summary %>
+  <%= form.text_field :summary %><br>
+
+  <%= form.label :assignee %>
+  <%= form.text_field :assignee %>
+</div><br>
+  Select an existing list to add this task to:
+<div>
+  <%= form.collection_select(:list_id, List.all, :id, :summary, include_blank: "") %><br>
+</div><br>
+  ...or create a new list to add this task to:
+<div>
+  <%= form.fields_for(:list) do |list_attributes| %>
+    <%= list_attributes.label :summary %>
+    <%= list_attributes.text_field :summary %><br>
+
+    <%= list_attributes.label :description %>
+    <%= list_attributes.text_area :description %>
+  <% end %>
+</div><br>
+  
+  <%= form.submit "Create task" %>
+<% end %>

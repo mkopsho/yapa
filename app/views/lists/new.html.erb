@@ -1,0 +1,21 @@
+<h1>Make a new list</h1>
+<%= form_with(model: @list) do |form| %>
+<div>
+  <%= form.label :summary %>
+  <%= form.text_field :summary %><br>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+</div><br>
+  (Optional) Create a starting task for this list:
+<div>
+  <%= form.fields_for(:tasks) do |tasks_attributes| %>
+    <%= tasks_attributes.label :summary %>
+    <%= tasks_attributes.text_field :summary %><br>
+
+    <%= tasks_attributes.label :assignee %>
+    <%= tasks_attributes.text_field :assignee %><br>
+  <% end %>
+  
+  <%= form.submit "Create list" %>
+<% end %>
