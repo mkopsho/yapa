@@ -26,6 +26,12 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
   end
 
+  def update
+  end
+
+  def delete
+  end
+
   private
 
   def task_params

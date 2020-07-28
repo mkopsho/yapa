@@ -1,0 +1,20 @@
+<h1>Create a team</h1>
+<% if flash[:error] %>
+  <div>
+    <%= flash[:error] %>
+  </div>
+  <% flash.clear %>
+<% end %>
+
+<%= form_with(model: @user) do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %><br>
+
+  <%= form.label :email %>
+  <%= form.email_field :email %><br>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %><br>
+  
+  <%= form.submit "Create team" %>
+<% end %>
