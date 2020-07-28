@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @lists = List.all
   end
 
   def new
@@ -13,7 +13,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    binding.pry
     @task = Task.new(task_params)
     @task.user_id = session[:user_id]
     if @task.save!

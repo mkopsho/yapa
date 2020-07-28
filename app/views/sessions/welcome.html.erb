@@ -1,4 +1,8 @@
 <p>Yet Another Productivity App</p>
+<% if logged_in? %>
+  <%= link_to "Make a new list", new_list_path %>
+  <%= link_to "Make a new task", new_task_path %>
+<% end %>
 
 <!-- <ul>
   <li>2 You realize that all your life you have been coasting along as if you were in a dream. Suddenly, facing the trials of the last few days, you have come alive.</li>
