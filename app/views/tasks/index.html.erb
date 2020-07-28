@@ -1,0 +1,7 @@
+<h1>Tasks Index</h1>
+<% @tasks.each do |task| %>
+  <ul>
+    <h2><%= task.list.summary %></h2>
+    <li><%= link_to task.summary, task_path(task) %></li>
+  </ul>
+<% end %>

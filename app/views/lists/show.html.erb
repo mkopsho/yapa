@@ -4,10 +4,8 @@ Summary: <%= @list.summary %><br>
 Description: <%= @list.description %><br>
 Status: <%= @list.status %><br>
 Task List: 
-  <%= @list.tasks.each do |task| %>
+  <% @list.tasks.each do |task| %>
   <ul>
-    <li>
-      <%= link_to task.summary, task_path(task) %> <%= task.assignee %>
-    </li>
+    <li><%= link_to task.summary, task_path(task) %> <%= task.assignee %></li>
   </ul>
   <% end %>
