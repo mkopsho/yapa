@@ -1,4 +1,11 @@
 <h1>Sign up</h1>
+<% if flash[:error] %>
+  <div>
+    <%= flash[:error] %>
+  </div>
+  <% flash.clear %>
+<% end %>
+
 <%= form_with(model: @user) do |form| %>
   <%= form.label :username %>
   <%= form.text_field :username %><br>
