@@ -14,7 +14,7 @@
   <% end %><br>
 </ul>
 
-<%= link_to "Add a list", new_list_path %><br> <!-- Make nested! -->
+<%= link_to "Add a list", new_team_list_path(@team) %><br>
 <%= link_to "Edit team details", edit_team_path(@team) %><br>
 <%= link_to "Add users to roster", new_team_membership_path(@team) %><br>
 <%= link_to "Delete team", team_path(@team), method: :delete, data: {confirm: "Are you sure? This will delete all associated lists and tasks."} %>

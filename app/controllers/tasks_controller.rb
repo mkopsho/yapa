@@ -15,9 +15,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = session[:user_id]
-    list = List.find_by(id: params[:task][:list_id])
     if @task.save!
-      redirect_to list_path(list)
+      redirect_to list_path(@task.list_id)
     else
       render :new
     end
@@ -50,6 +49,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:summary, :assignee, :list_id, list_attributes: [:summary, :description, :id])
+    params.require(:task).permit(:summary, :assignee, :list_id, list_attributes: [:summary, :description, :id, :team_id])
   end
 end

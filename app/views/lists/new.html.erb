@@ -1,4 +1,6 @@
 <h1>Make a new list</h1>
+<%= render partial: "layouts/errors", locals: {object: @list} %>
+
 <%= form_with(model: @list) do |form| %>
 <div>
   <%= form.label :summary %>
@@ -17,12 +19,10 @@
     <%= tasks_attributes.text_field :assignee %><br>
   <% end %>
 </div><br>
-<% if !@team %>
-  (Optional) Add a team to this list:
-  <div>
-    <%= form.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %><br>
-  </div>
-<% end %>
-  
+  Add this list to your team:
+<div>
+  <%= form.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %><br>
+</div><br>
+
   <%= form.submit "Create list" %>
 <% end %>

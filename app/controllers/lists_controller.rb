@@ -4,13 +4,12 @@ class ListsController < ApplicationController
   end
 
   def new
-    #if @team = Team.find_by(id: params[:team_id]) 
-    #  @list = List.new(team_id: params[:team_id])
-    #  @list.tasks.build
-    #else
+    if @team = Team.find_by(id: params[:team_id])
+      @list = List.new(team_id: params[:team_id])
+    else
       @list = List.new
       @list.tasks.build
-    #end
+    end
   end
 
   def create

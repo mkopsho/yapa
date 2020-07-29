@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :teams, through: :memberships
 
   has_secure_password
-  validates_presence_of :username, :email
-  validates_uniqueness_of :username
+  validates :username, :email, presence: true
+  validates :username, uniqueness: true
 
   def self.create_by_google_omniauth(auth)
     self.find_or_create_by(username: auth[:info][:email]) do |user|

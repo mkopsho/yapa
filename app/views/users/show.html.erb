@@ -1,6 +1,11 @@
 <h1>User show page for <%= @user.username %></h1>
 <% if logged_in? %>
-  <h2>Build your team!</h2>
+  <h2>Your current teams:</h2>
+  <% @user.teams.each do |team| %>
+    <%= link_to team.name, team_path(team) %>
+  <% end %>
+
+  <h2>Make a new team!</h2>
   <%= link_to "Make a new team", new_team_path%><br>
   <h2>Get working!</h2>
   <%= link_to "Make a new list", new_list_path %><br>

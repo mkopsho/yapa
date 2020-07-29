@@ -1,4 +1,6 @@
 <h1>Edit List</h1>
+<%= render partial: "layouts/errors", locals: {object: @list} %>
+
 <%= form_with(model: @list) do |form| %>
 <div>
   <%= form.label :summary %>

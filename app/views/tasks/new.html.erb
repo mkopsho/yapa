@@ -1,4 +1,6 @@
 <h1>Make a new task</h1>
+<%= render partial: "layouts/errors", locals: {object: @task} %>
+
 <%= form_with(model: @task) do |form| %>
 <div>
   <%= form.label :summary %>
@@ -19,7 +21,10 @@
       <%= list_attributes.text_field :summary %><br>
 
       <%= list_attributes.label :description %>
-      <%= list_attributes.text_area :description %>
+      <%= list_attributes.text_area :description %><br>
+      <br>
+      Team
+      <%= list_attributes.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %>
     <% end %>
   </div><br>
 <% end %>
