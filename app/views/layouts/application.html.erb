@@ -26,9 +26,10 @@
   </div>
   <body>
     <!-- Flash messages -->
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
+    <% flash.each do |name, message| -%>
+      <%= content_tag :div, message, class: name %>
+      <% flash.clear %>
+    <% end %>
 
     <%= yield %>
   </body>

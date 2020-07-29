@@ -1,12 +1,4 @@
 <h1>Log in</h1>
-<%= render partial: "layouts/errors", locals: {object: @user} %>
-
-<% if flash[:error] %>
-  <div>
-    <%= flash[:error] %>
-  </div>
-  <% flash.clear %>
-<% end %>
 
 <%= form_with(model: @user, url: login_path) do |form| %>
   <%= form.label :username %>

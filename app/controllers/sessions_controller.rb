@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    #binding.pry
     if params[:provider] == "google_oauth2"
       user = User.create_by_google_omniauth(auth)
       session[:user_id] = user.id

@@ -1,4 +1,6 @@
 class MembershipsController < ApplicationController
+  before_action :logged_in?
+
   def new
     if @team = Team.find_by(id: params[:team_id])
       @membership = Membership.new(team_id: params[:team_id])

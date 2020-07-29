@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  before_action :logged_in?
+
   def index
     @lists = List.all
   end
