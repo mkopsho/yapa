@@ -3,8 +3,8 @@
   <p><%= @team.description %></p>
 <h2>Roster</h2>
 <ul>
-  <% @team.users.each do |user| %>
-  <li><%= link_to user.username, user_path(user) %> - <%= Membership.roles(user, @team) %>
+  <% @team.unique_roster(@team).each do |user| %>
+  <li><%= link_to user.username, user_path(user) %> - <%= user.roles(user) %>
   <% end %><br>
 </ul>
 <h2>Lists</h2>
@@ -16,6 +16,5 @@
 
 <%= link_to "Add a list", new_list_path %><br> <!-- Make nested! -->
 <%= link_to "Edit team details", edit_team_path(@team) %><br>
-<%= link_to "Add users", new_team_membership_path(@team) %><br>
-<%= link_to "Remove users", edit_team_membership_path(@team) %><br>
+<%= link_to "Add users to roster", new_team_membership_path(@team) %><br>
 <%= link_to "Delete team", team_path(@team), method: :delete, data: {confirm: "Are you sure? This will delete all associated lists and tasks."} %>

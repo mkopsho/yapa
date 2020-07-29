@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :lists, only: [:new, :index]
-    resources :memberships, only: [:new, :edit]
+    resources :memberships, only: [:new]
   end
 
   resources :lists do

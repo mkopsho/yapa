@@ -22,9 +22,20 @@ class MembershipsController < ApplicationController
   end
 
   def update
+    membership = Membership.find_by(id: params[:id])
+    if membership.update(membership_params)
+      redirect_to team_path
+    else
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    binding.pry
+    membership = Membership.find_by(id: params[:id])
+    membership.destroy
+    flash[:notice] = "User removed from roster."
+    redirect_to team_path
   end
 
   private
