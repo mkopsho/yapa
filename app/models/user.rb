@@ -12,9 +12,4 @@ class User < ApplicationRecord
       user.password = SecureRandom.hex
     end
   end
-
-  def roles(user)
-    map = user.memberships.map { |m| m.role }
-    map.join(", ")
-  end
 end
