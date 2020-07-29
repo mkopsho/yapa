@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_155606) do
+ActiveRecord::Schema.define(version: 2020_07_29_135103) do
 
   create_table "lists", force: :cascade do |t|
     t.string "summary"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2020_07_27_155606) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.string "category"
     t.integer "user_id"
     t.integer "team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role"
     t.index ["team_id"], name: "index_memberships_on_team_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end

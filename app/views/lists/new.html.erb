@@ -16,11 +16,13 @@
     <%= tasks_attributes.label :assignee %>
     <%= tasks_attributes.text_field :assignee %><br>
   <% end %>
-</div>
+</div><br>
+<% if !@team %>
   (Optional) Add a team to this list:
-<div>
-  <%= form.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %><br>
-</div>
+  <div>
+    <%= form.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %><br>
+  </div>
+<% end %>
   
   <%= form.submit "Create list" %>
 <% end %>

@@ -1,0 +1,17 @@
+<h1>New Membership</h1>
+<%= form_with(model: @membership) do |form| %>
+<div>
+  <%= form.label :role %>
+  <%= form.text_field :role %><br>
+</div><br>
+  User:
+<div>
+  <%= form.collection_select(:user_id, User.all, :id, :username, :prompt => true) %>
+</div>
+  Team confirmation:
+  <div>
+    <%= form.collection_select(:team_id, Team.all, :id, :name) %>
+  </div>
+  
+  <%= form.submit "Add user to team" %>
+<% end %>

@@ -1,4 +1,4 @@
-<h1>User show page</h1>
+<h1>User show page for <%= @user.username %></h1>
 <% if logged_in? %>
   <h2>Build your team!</h2>
   <%= link_to "Make a new team", new_team_path%><br>

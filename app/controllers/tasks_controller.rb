@@ -15,8 +15,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = session[:user_id]
+    list = List.find_by(id: params[:task][:list_id])
     if @task.save!
-      redirect_to task_path(@task)
+      redirect_to list_path(list)
     else
       render :new
     end

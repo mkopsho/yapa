@@ -4,8 +4,13 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list = List.new
-    @list.tasks.build
+    #if @team = Team.find_by(id: params[:team_id]) 
+    #  @list = List.new(team_id: params[:team_id])
+    #  @list.tasks.build
+    #else
+      @list = List.new
+      @list.tasks.build
+    #end
   end
 
   def create
@@ -44,6 +49,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:summary, :description, :team_id, tasks_attributes: [:summary, :assignee])
+    params.require(:list).permit(:summary, :description, :team_id, tasks_attributes: [:summary, :assignee, :id])
   end
 end

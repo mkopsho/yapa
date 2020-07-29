@@ -1,0 +1,12 @@
+<h1>Edit Team Details</h1>
+<%= form_with(model: @team) do |form| %>
+<div>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %><br>
+  
+</div><br>
+  <%= form.submit "Edit list" %>
+<% end %>

@@ -1,5 +1,6 @@
 <h1>List show page</h1>
 
+Team: <%= link_to @list.team.name, team_path(@list.team) %><br>
 Summary: <%= @list.summary %><br>
 Description: <%= @list.description %><br>
 Status: <%= @list.status %><br>
