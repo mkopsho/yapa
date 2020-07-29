@@ -6,13 +6,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
+    #binding.pry
+    if params[:provider] == "google_oauth2"
+      user = User.create_by_google_omniauth(auth)
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash[:error] = "Invalid credentials, please try again."
-      redirect_to login_path
+      user = User.find_by(username: params[:username])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to user_path(user)
+      else
+        flash[:error] = "Invalid credentials, please try again."
+        redirect_to login_path
+      end
     end
   end
 
@@ -23,5 +30,11 @@ class SessionsController < ApplicationController
     else
       redirect_to '/'
     end
+  end
+
+  private
+
+  def auth
+    request.env["omniauth.auth"]
   end
 end

@@ -5,4 +5,11 @@ class User < ApplicationRecord
   has_secure_password
   validates_presence_of :username, :email
   validates_uniqueness_of :username
+
+  def self.create_by_google_omniauth(auth)
+    self.find_or_create_by(username: auth[:info][:email]) do |user|
+      user.email = auth[:info][:email]
+      user.password = SecureRandom.hex
+    end
+  end
 end

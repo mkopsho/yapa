@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   
   get '/signup', to: 'users#new'
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   resources :teams do
     resources :lists, only: [:new, :index]
   end

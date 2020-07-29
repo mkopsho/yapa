@@ -21,6 +21,7 @@
     <% else %>
       <%= link_to "Sign Up", signup_path, style: "float: right" %>
       <%= link_to "Log In", login_path, style: "float: right" %>
+      <%= link_to "Log in with Google", "/auth/google_oauth2", style: "float: right" %>
     <% end %>
   </div>
   <body>
@@ -28,7 +29,7 @@
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
-    
+
     <%= yield %>
   </body>
 </html>
