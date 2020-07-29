@@ -24,7 +24,8 @@ class MembershipsController < ApplicationController
   def update
     membership = Membership.find_by(id: params[:id])
     if membership.update(membership_params)
-      redirect_to team_path
+      @team = membership.team
+      redirect_to team_path(@team)
     else
       render :edit
     end

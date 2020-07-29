@@ -4,8 +4,7 @@ class Membership < ApplicationRecord
 
   #accepts_nested_attributes_for :team, :user
 
-  def self.print_roles(user)
-    map = user.memberships.map { |m| m.role }
-    map.join(", ")
+  def self.user_roles(user, team)
+    user.memberships.where(team_id: team.id)
   end
 end

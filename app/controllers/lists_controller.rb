@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   def new
     if @team = Team.find_by(id: params[:team_id])
       @list = List.new(team_id: params[:team_id])
+      @list.tasks.build
     else
       @list = List.new
       @list.tasks.build

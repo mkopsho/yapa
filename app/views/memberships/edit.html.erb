@@ -1,4 +1,4 @@
-<h1>Edit role(s)</h1>
+<h1>Edit role(s) for <%= @membership.user.username %> on team <%= @membership.team.name %></h1>
 <%= form_with(model: @membership) do |form| %>
 <div>
   <%= form.label :role %>
