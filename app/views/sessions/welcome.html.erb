@@ -1,8 +1,10 @@
 <% if logged_in? %>
   <h2>Your current teams:</h2>
-  <% current_user.teams.each do |team| %>
-    <%= link_to team.name, team_path(team) %>
-  <% end %>
+  <ul>
+    <% current_user.teams.each do |team| %>
+      <li><%= link_to team.name, team_path(team) %></li>
+    <% end %>
+  </ul>
 
   <h2>Make a new team!</h2>
   <%= link_to "Make a new team", new_team_path%><br>

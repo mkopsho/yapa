@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  before_action :logged_in?
-  
   def home
+    if logged_in?
+      @user = current_user
+      render :home
+    else
+      redirect_to '/'
+    end
   end
-  
+
   def new
     @user = User.new
   end
@@ -12,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to home_path
     else
       flash[:error] = "That username is already taken, please try again."
       redirect_to signup_path

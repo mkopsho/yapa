@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#clear'
   
   get '/signup', to: 'users#new'
+  get '/home', to: 'users#home'
 
   get '/auth/:provider/callback', to: 'sessions#create'
 

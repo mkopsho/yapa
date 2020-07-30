@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
     if params[:provider] == "google_oauth2"
       user = User.create_by_google_omniauth(auth)
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to home_path
     else
       user = User.find_by(username: params[:username])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to user_path(user)
+        redirect_to home_path
       else
         flash[:error] = "Invalid credentials, please try again."
         redirect_to login_path
