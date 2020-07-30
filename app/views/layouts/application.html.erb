@@ -14,21 +14,11 @@
       <img src="/yapa-logo.png" width="113" height="87">
     </a>
     <p>Yet Another Productivity App</p>
-
-    <!-- Dynamic logout/login/signup
-    <% if logged_in? %>
-      <%= link_to "Log Out", logout_path, method: :delete, style: "float: right" %>
-    <% else %>
-      <%= link_to "Sign Up", signup_path, style: "float: right" %>
-      <%= link_to "Log In", login_path, style: "float: right" %>
-      <%= link_to "Log in with Google", "/auth/google_oauth2", style: "float: right" %>
-    <% end %> -->
   </div>
   <body>
     <!-- Flash messages -->
     <% flash.each do |name, message| -%>
       <%= content_tag :div, message, class: name %>
-      <% flash.clear %>
     <% end %>
 
     <%= yield %>

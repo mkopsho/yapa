@@ -1,7 +1,7 @@
 <h1><%= @list.summary %></h1>
 Team: <%= link_to @list.team.name, team_path(@list.team) %><br>
 Description: <%= @list.description %><br>
-<h3>Tasks:</h3>
+<h3><%= link_to "Tasks", list_tasks_path(@list) %> </h3>
   <% @list.tasks.each do |task| %>
   <ul>
     <li><%= link_to task.summary, task_path(task) %> <%= task.assignee %></li>

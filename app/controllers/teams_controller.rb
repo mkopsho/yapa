@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     @team = Team.find_by(id: params[:id])
     if !@team.users.include?(current_user)
       flash[:error] = "You do not have the correct permissions to do that."
-      render :show
+      redirect_to team_path(@team)
     end
   end
 
@@ -44,7 +44,7 @@ class TeamsController < ApplicationController
     @team = Team.find_by(id: params[:id])
     if !@team.users.include?(current_user)
       flash[:error] = "You do not have the correct permissions to do that."
-      render :show
+      redirect_to team_path(@team)
     else
       @team.destroy
       flash[:notice] = "Team deleted."

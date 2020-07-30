@@ -1,6 +1,13 @@
 class MembershipsController < ApplicationController
   before_action :logged_in?
 
+  def index
+    if @team = Team.find_by(id: params[:team_id])
+    else
+      @memberships = Memberships.all
+    end
+  end
+
   def new
     if @team = Team.find_by(id: params[:team_id])
       if !@team.users.include?(current_user)

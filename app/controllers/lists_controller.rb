@@ -37,7 +37,7 @@ class ListsController < ApplicationController
     @list = List.find_by(id: params[:id])
     if !@list.team.users.include?(current_user)
       flash[:error] = "You do not have the correct permissions to do that."
-      render :show
+      redirect_to list_path(@list)
     end
   end
 
@@ -54,7 +54,7 @@ class ListsController < ApplicationController
     @list = List.find_by(id: params[:id])
     if !@list.team.users.include?(current_user)
       flash[:error] = "You do not have the correct permissions to do that."
-      render :show
+      redirect_to list_path(@list)
     else
       @list.destroy
       flash[:notice] = "List deleted."

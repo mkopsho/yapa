@@ -1,4 +1,12 @@
 <h1>Tasks Index</h1>
+<% if @list %>
+<h2>Tasks for <%= @list.summary %></h2>
+  <ul>  
+    <% @list.tasks.each do |task| %>
+      <li><%= link_to task.summary, task_path(task) %></li>
+    <% end %>
+  </ul>
+<% else %>
 <h2>Tasks by List</h2>
   <% @lists.each do |list| %>
     <ul>
@@ -8,3 +16,4 @@
       <% end %>
     </ul>
   <% end %>
+<% end %>
