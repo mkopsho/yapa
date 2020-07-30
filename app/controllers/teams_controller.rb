@@ -48,7 +48,7 @@ class TeamsController < ApplicationController
     else
       @team.destroy
       flash[:notice] = "Team deleted."
-      redirect_to tasks_path
+      redirect_to "/home"
     end
   end
 
