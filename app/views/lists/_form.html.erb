@@ -1,0 +1,28 @@
+<%= form_with(model: @list) do |form| %>
+  <%= form.label :summary %>
+  <%= form.text_field :summary %><br>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %><br><br>
+
+  <% if !@team %>
+    Add this list to your team:<br>
+    <%= form.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %><br>
+  <% else %>
+    <%= form.label :team %>
+    <%= form.collection_select(:team_id, Team.all, :id, :name) %><br><br>
+  <% end %>
+
+  <% if @list.task_ids.include?(nil) %>
+    Create a starting task for this list:<br>
+    <%= form.fields_for(:tasks) do |tasks_attributes| %>
+      <%= tasks_attributes.label :summary %>
+      <%= tasks_attributes.text_field :summary %><br>
+
+      <%= tasks_attributes.label :assignee %>
+      <%= tasks_attributes.text_field :assignee %><br><br>
+    <% end %>
+  <% end %>
+
+  <%= form.submit "Submit list" %>
+<% end %>
