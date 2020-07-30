@@ -7,8 +7,13 @@ class ListsController < ApplicationController
 
   def new
     if @team = Team.find_by(id: params[:team_id])
-      @list = List.new(team_id: params[:team_id])
-      @list.tasks.build
+      if !@team.users.include?(current_user)
+        flash[:error] = "You do not have the correct permissions to do that."
+        redirect_to team_path(@team)
+      else
+        @list = List.new(team_id: params[:team_id])
+        @list.tasks.build
+      end
     else
       @list = List.new
       @list.tasks.build

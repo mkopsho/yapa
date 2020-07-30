@@ -3,7 +3,12 @@ class MembershipsController < ApplicationController
 
   def new
     if @team = Team.find_by(id: params[:team_id])
-      @membership = Membership.new(team_id: params[:team_id])
+      if !@team.users.include?(current_user)
+        flash[:error] = "You do not have the correct permissions to do that."
+        redirect_to team_path(@team)
+      else
+        @membership = Membership.new(team_id: params[:team_id])
+      end
     else
       @membership = Membership.new
     end
