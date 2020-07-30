@@ -3,14 +3,20 @@
   <%= form.text_field :summary %><br>
 
   <%= form.label :assignee %>
-  <%= form.text_field :assignee %><br>
+  <% if @list %>
+    <%= form.collection_select(:user_id, @list.team.users, :id, :username) %><br>
+  <% else %>
+    <%= form.collection_select(:user_id, User.all, :id, :username, :prompt => true) %><br>
+  <% end %>
+  <br>
 
   Select an existing list to add this task to:<br>
   <%= form.label :list %>
   <%= form.collection_select(:list_id, List.all, :id, :summary, :prompt => true) %><br>
+  <br>
 
   <% if !@list %>
-  ...or create a new list to add this task to:
+  ...or create a new list to add this task to:<br>
   
     <%= form.fields_for(:list) do |list_attributes| %>
       <%= list_attributes.label :summary %>
@@ -22,7 +28,8 @@
       Team
       <%= list_attributes.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %>
     <% end %>
-<% end %>
+<% end %><br>
+<br>
   
   <%= form.submit "Submit list" %>
 <% end %>
