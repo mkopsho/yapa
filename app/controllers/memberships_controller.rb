@@ -21,6 +21,11 @@ class MembershipsController < ApplicationController
 
   def edit
     @membership = Membership.find_by(id: params[:id])
+    @team = @membership.team
+    if !@team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      redirect_to team_path(@team)
+    end
   end
 
   def update
@@ -34,11 +39,16 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     membership = Membership.find_by(id: params[:id])
-    membership.destroy
-    flash[:notice] = "User removed from roster."
-    redirect_to team_path
+    @team = membership.team
+    if !@team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      redirect_to team_path(@team)
+    else
+      membership.destroy
+      flash[:notice] = "User removed from roster."
+      redirect_to team_path
+    end
   end
 
   private

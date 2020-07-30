@@ -4,7 +4,7 @@
 <h2>Roster</h2>
 <ul>
   <% @team.unique_roster(@team).each do |user| %>
-  <li><%= link_to user.username, user_path(user) %> - 
+  <li><%= user.username %> - 
       <% Membership.user_roles(user, @team).each do |membership| %>
         <%= link_to membership.role, edit_membership_path(membership) %>
       <% end %>
