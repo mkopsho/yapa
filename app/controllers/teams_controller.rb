@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  include PermissionsHelper
   before_action :logged_in?
 
   def index
@@ -25,10 +26,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find_by(id: params[:id])
-    if !@team.users.include?(current_user)
-      flash[:error] = "You do not have the correct permissions to do that."
-      redirect_to team_path(@team)
-    end
+    team_permissions_check
   end
 
   def update

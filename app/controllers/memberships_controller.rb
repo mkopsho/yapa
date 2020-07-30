@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  include PermissionsHelper
   before_action :logged_in?
 
   def index
@@ -10,12 +11,8 @@ class MembershipsController < ApplicationController
 
   def new
     if @team = Team.find_by(id: params[:team_id])
-      if !@team.users.include?(current_user)
-        flash[:error] = "You do not have the correct permissions to do that."
-        redirect_to team_path(@team)
-      else
-        @membership = Membership.new(team_id: params[:team_id])
-      end
+      @membership = Membership.new(team_id: params[:team_id])
+      team_permissions_check
     else
       @membership = Membership.new
     end
@@ -34,10 +31,7 @@ class MembershipsController < ApplicationController
   def edit
     @membership = Membership.find_by(id: params[:id])
     @team = @membership.team
-    if !@team.users.include?(current_user)
-      flash[:error] = "You do not have the correct permissions to do that."
-      redirect_to team_path(@team)
-    end
+    team_permissions_check
   end
 
   def update
@@ -54,8 +48,7 @@ class MembershipsController < ApplicationController
     membership = Membership.find_by(id: params[:id])
     @team = membership.team
     if !@team.users.include?(current_user)
-      flash[:error] = "You do not have the correct permissions to do that."
-      redirect_to team_path(@team)
+      team_permissions_check
     else
       membership.destroy
       flash[:notice] = "User removed from roster."

@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  include PermissionsHelper
   before_action :logged_in?
 
   def index
@@ -8,8 +9,7 @@ class ListsController < ApplicationController
   def new
     if @team = Team.find_by(id: params[:team_id])
       if !@team.users.include?(current_user)
-        flash[:error] = "You do not have the correct permissions to do that."
-        redirect_to team_path(@team)
+        team_permissions_check
       else
         @list = List.new(team_id: params[:team_id])
         @list.tasks.build
@@ -35,10 +35,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find_by(id: params[:id])
-    if !@list.team.users.include?(current_user)
-      flash[:error] = "You do not have the correct permissions to do that."
-      redirect_to list_path(@list)
-    end
+    list_permissions_check
   end
 
   def update
@@ -53,8 +50,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find_by(id: params[:id])
     if !@list.team.users.include?(current_user)
-      flash[:error] = "You do not have the correct permissions to do that."
-      redirect_to list_path(@list)
+      list_permissions_check
     else
       @list.destroy
       flash[:notice] = "List deleted."

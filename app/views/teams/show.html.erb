@@ -16,8 +16,11 @@
     <li><%= link_to list.summary, list_path(list) %></li>
   <% end %><br>
 </ul>
-<!-- Add current_user check here! -->
+
+<% if @team.users.include?(current_user) %>
+<h2>Management zone</h2>
   <%= link_to "Add a list", new_team_list_path(@team) %><br>
   <%= link_to "Edit team details", edit_team_path(@team) %><br>
   <%= link_to "Add users to roster", new_team_membership_path(@team) %><br>
   <%= link_to "Delete team", team_path(@team), method: :delete, data: {confirm: "Are you sure? This will delete all associated lists and tasks."} %>
+<% end %>
