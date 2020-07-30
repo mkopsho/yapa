@@ -1,4 +1,4 @@
-<h1>User show page for <%= @user.username %></h1>
+<h1>Stats for <%= @user.username %></h1>
 <% if logged_in? %>
   <h2>Your current teams:</h2>
   <ul>
@@ -11,5 +11,8 @@
   <%= link_to "Make a new team", new_team_path%><br>
   <h2>Get working!</h2>
   <%= link_to "Make a new list", new_list_path %><br>
-  <%= link_to "Make a new task", new_task_path %>
+  <%= link_to "Make a new task", new_task_path %><br>
+  <br>
+  <br>
+  <%= link_to "Log Out", logout_path, method: :delete %><br>
 <% end %>
