@@ -1,33 +1,3 @@
 <h1>Make a new task</h1>
 <%= render partial: "layouts/errors", locals: {object: @task} %>
-
-<%= form_with(model: @task) do |form| %>
-<div>
-  <%= form.label :summary %>
-  <%= form.text_field :summary %><br>
-
-  <%= form.label :assignee %>
-  <%= form.text_field :assignee %>
-</div><br>
-  Select an existing list to add this task to:
-<div>
-  <%= form.collection_select(:list_id, List.all, :id, :summary, :prompt => true) %><br>
-<% if !@list %>
-  </div><br>
-    ...or create a new list to add this task to:
-  <div>
-    <%= form.fields_for(:list) do |list_attributes| %>
-      <%= list_attributes.label :summary %>
-      <%= list_attributes.text_field :summary %><br>
-
-      <%= list_attributes.label :description %>
-      <%= list_attributes.text_area :description %><br>
-      <br>
-      Team
-      <%= list_attributes.collection_select(:team_id, Team.all, :id, :name, :prompt => true) %>
-    <% end %>
-  </div><br>
-<% end %>
-  
-  <%= form.submit "Create task" %>
-<% end %>
+<%= render partial: "form" %>

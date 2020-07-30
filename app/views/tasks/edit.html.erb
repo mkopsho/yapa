@@ -1,13 +1,3 @@
 <h1>Edit Task</h1>
 <%= render partial: "layouts/errors", locals: {object: @task} %>
-
-<%= form_with(model: @task) do |form| %>
-<div>
-  <%= form.label :summary %>
-  <%= form.text_field :summary %><br>
-
-  <%= form.label :list %>
-  <%= form.collection_select(:list_id, List.all, :id, :summary, :prompt => true) %>
-</div><br>
-  <%= form.submit "Edit list" %>
-<% end %>
+<%= render "form" %>
