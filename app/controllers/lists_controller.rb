@@ -30,6 +30,10 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find_by(id: params[:id])
+    if !@list.team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      render :show
+    end
   end
 
   def update
@@ -43,9 +47,14 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find_by(id: params[:id])
-    @list.destroy
-    flash[:notice] = "List deleted."
-    redirect_to lists_path
+    if !@list.team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      render :show
+    else
+      @list.destroy
+      flash[:notice] = "List deleted."
+      redirect_to lists_path
+    end
   end
 
   private

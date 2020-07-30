@@ -41,9 +41,14 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find_by(id: params[:id])
-    @team.destroy
-    flash[:notice] = "Team deleted."
-    redirect_to tasks_path
+    if !@team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      render :show
+    else
+      @team.destroy
+      flash[:notice] = "Team deleted."
+      redirect_to tasks_path
+    end
   end
 
   private

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :logged_in?
-  
+
   def index
     @lists = List.all
   end
@@ -30,6 +30,10 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find_by(id: params[:id])
+    if !@task.list.team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      render :show
+    end
   end
 
   def update
@@ -43,9 +47,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find_by(id: params[:id])
-    @task.destroy
-    flash[:notice] = "Task deleted."
-    redirect_to tasks_path
+    if !@task.list.team.users.include?(current_user)
+      flash[:error] = "You do not have the correct permissions to do that."
+      render :show
+    else
+      @task.destroy
+      flash[:notice] = "Task deleted."
+      redirect_to tasks_path
+    end
   end
 
   private
