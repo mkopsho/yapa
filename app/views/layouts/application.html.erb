@@ -9,6 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <br>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
@@ -30,10 +31,14 @@
                 <a class="button is-light" href="/login">
                   Log in
                 </a>
-                <% else %>
-                <a class="button is-light" href="/logout">
-                  Log out
+                <a class="button is-light" href="/auth/google_oauth2">
+                  <span class="icon">
+                    <i class="fa fa-google"></i>
+                  </span>
+                  <span>Log in with the Goog</span>
                 </a>
+                <% else %>
+                <%= button_to "Log out", logout_path, method: :delete, class:"button is-light" %>
                 <% end %>
               </div>
             </div>

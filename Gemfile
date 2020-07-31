@@ -54,8 +54,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# User-added gems
+# Developer-added gems
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem "bulma-rails", "~> 0.9.0"
+gem "font-awesome-rails"
