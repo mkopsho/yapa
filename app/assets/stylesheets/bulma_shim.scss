@@ -1,7 +1,15 @@
 @import "bulma";
 @import "font-awesome";
 
-#header-logo{
+body { 
+  background: linear-gradient(60deg, #e46d3e, #9198e5);
+  background-size: cover;
+  text-align: center;
+  width: 100%;
+  min-height:100vh
+}
+
+#header-logo {
   background: url(/yapa-logo.png) no-repeat center center;
   background-size: cover;
   width: 152px
