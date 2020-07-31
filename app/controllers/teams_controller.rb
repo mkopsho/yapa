@@ -12,8 +12,10 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team.users << current_user
+    creator = current_user
+    @team.users << creator
     if @team.save!
+      creator.memberships.last.update(role: "creator")
       redirect_to team_path(@team)
     else
       render :new
