@@ -3,7 +3,7 @@
   <p><%= @team.description %></p>
 <h2><%= link_to "Roster", team_memberships_path(@team) %></h2>
 <ul>
-  <% @team.unique_roster(@team).each do |user| %>
+  <% @team.unique_user_membership.each do |user| %>
   <li><%= user.username %> - 
       <% Membership.user_roles(user, @team).each do |membership| %>
         <%= link_to membership.role, edit_membership_path(membership) %>

@@ -12,4 +12,8 @@ class User < ApplicationRecord
       user.password = SecureRandom.hex
     end
   end
+
+  def unique_team_membership
+    teams.uniq.map { |team| team }
+  end
 end

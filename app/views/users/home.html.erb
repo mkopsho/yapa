@@ -2,7 +2,7 @@
 <% if logged_in? %>
   <h2>Your current teams:</h2>
   <ul>
-    <% @user.teams.each do |team| %>
+    <% @user.unique_team_membership.each do |team| %>
       <li><%= link_to team.name, team_path(team) %></li>
     <% end %>
   </ul>

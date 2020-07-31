@@ -5,7 +5,7 @@ class Team < ApplicationRecord
 
   validates :name, uniqueness: true
 
-  def unique_roster(team)
-    team.users.uniq.map { |user| user }
+  def unique_user_membership
+    users.uniq.map { |user| user }
   end
 end
