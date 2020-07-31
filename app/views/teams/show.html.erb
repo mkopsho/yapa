@@ -1,26 +1,28 @@
-<h1><%= @team.name %> show page</h1>
-<h2>Description</h2>
-  <p><%= @team.description %></p>
-<h2><%= link_to "Roster", team_memberships_path(@team) %></h2>
-<ul>
-  <% @team.unique_user_membership.each do |user| %>
-  <li><%= user.username %> - 
-      <% Membership.user_roles(user, @team).each do |membership| %>
-        <%= link_to membership.role, edit_membership_path(membership) %>
-      <% end %>
-  <% end %><br>
-</ul>
-<h2>Lists</h2>
-<ul>
-  <% @team.lists.each do |list| %>
-    <li><%= link_to list.summary, list_path(list) %></li>
-  <% end %><br>
-</ul>
+<h1>Stats for <%= @team.name %></h1>
+<div class="content">
+  <h2>Description</h2>
+    <p><%= @team.description %></p>
+  <h2><%= link_to "Roster", team_memberships_path(@team) %></h2>
+  <ul>
+    <% @team.unique_user_membership.each do |user| %>
+    <li><%= user.username %> - 
+        <% Membership.user_roles(user, @team).each do |membership| %>
+          <%= link_to membership.role, edit_membership_path(membership) %>
+        <% end %>
+    <% end %><br>
+  </ul>
+  <h2>Lists</h2>
+  <ul>
+    <% @team.lists.each do |list| %>
+      <li><%= link_to list.summary, list_path(list) %></li>
+    <% end %><br>
+  </ul>
 
 <% if @team.users.include?(current_user) %>
-<h2>Management zone</h2>
-  <%= link_to "Add a list", new_team_list_path(@team) %><br>
-  <%= link_to "Edit team details", edit_team_path(@team) %><br>
-  <%= link_to "Add users to roster", new_team_membership_path(@team) %><br>
-  <%= link_to "Delete team", team_path(@team), method: :delete, data: {confirm: "Are you sure? This will delete all associated lists and tasks."} %>
+  <h2>Management zone</h2>
+    <%= link_to "Add a list", new_team_list_path(@team) %><br>
+    <%= link_to "Edit team details", edit_team_path(@team) %><br>
+    <%= link_to "Add users to roster", new_team_membership_path(@team) %><br>
+    <%= link_to "Delete team", team_path(@team), method: :delete, data: {confirm: "Are you sure? This will delete all associated lists and tasks."} %>
 <% end %>
+</div>

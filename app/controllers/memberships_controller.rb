@@ -5,7 +5,7 @@ class MembershipsController < ApplicationController
   def index
     if @team = Team.find_by(id: params[:team_id])
     else
-      @memberships = Memberships.all
+      @memberships = Membership.all
     end
   end
 

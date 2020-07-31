@@ -1,8 +1,8 @@
-<h1>Edit role(s) for <%= @membership.user.username %> on team <%= @membership.team.name %></h1>
+<h1>Edit role(s) for teammember <%= @membership.user.username %> on team <%= @membership.team.name %></h1>
 <%= form_with(model: @membership) do |form| %>
 <div>
   <%= form.label :role %>
   <%= form.text_field :role %><br>
 </div><br>
-  <%= form.submit "Edit role" %>
+  <%= form.submit "Edit role", class:"button is-primary" %>
 <% end %>

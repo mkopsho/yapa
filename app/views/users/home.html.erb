@@ -1,5 +1,6 @@
 <h1>Stats for <%= @user.username %></h1>
 <% if logged_in? %>
+<div class="content">
   <h2>Your current teams:</h2>
   <ul>
     <% @user.unique_team_membership.each do |team| %>
@@ -12,6 +13,5 @@
   <h2>Get working!</h2>
   <%= link_to "Make a new list", new_list_path %><br>
   <%= link_to "Make a new task", new_task_path %><br>
-  <br>
-  <br>
+</div>
 <% end %>

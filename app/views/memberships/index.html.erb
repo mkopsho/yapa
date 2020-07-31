@@ -1,9 +1,11 @@
 <h1>Membership Index</h1>
-<% if @team %>
-  <h2>Role index for <%= @team.name %></h2>
-  <% @team.memberships.order_by_role.each do |membership| %>
-    <ul>
-      <li><%= membership.role %></li>
-    </ul>
+<div class="content">
+  <% if @team %>
+    <h2>Role index for team <%= @team.name %></h2>
+    <% @team.memberships.order_by_role.each do |membership| %>
+      <ul>
+        <li><%= link_to membership.role, edit_membership_path(membership) %></li>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
+</div>

@@ -1,6 +1,8 @@
 <h1>Lists Index</h1>
-<% @lists.order_by_title.each do |list| %>
-  <ul>
-    <li><%= link_to list.summary, list_path(list) %></li>
-  </ul>
-<% end %>
+<div class="content">
+  <% @lists.order_by_title.each do |list| %>
+    <ul>
+      <li><%= link_to list.summary, list_path(list) %></li>
+    </ul>
+  <% end %>
+</div>

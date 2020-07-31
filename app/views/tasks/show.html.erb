@@ -1,9 +1,12 @@
 <h1>Task show page</h1>
-<div>
+<div class="content">
   Summary: <%= @task.summary %><br>
   Assignee: <%= @task.assignee %><br>
-  List: <%= link_to @task.list.summary, list_path(@task.list) %>
-</div><br>
+  List: <%= link_to @task.list.summary, list_path(@task.list) %><br>
 
-<%= link_to "Edit task details", edit_task_path(@task) %><br>
-<%= link_to "Delete this task", task_path(@task), method: :delete %><br>
+  <% if @task.list.team.users.include?(current_user) %>
+  <h2>Management zone</h2>
+    <%= link_to "Edit task details", edit_task_path(@task) %><br>
+    <%= link_to "Delete this task", task_path(@task), method: :delete %><br>
+  <% end %>
+</div>

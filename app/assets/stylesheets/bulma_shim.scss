@@ -1,16 +1,34 @@
 @import "bulma";
 @import "font-awesome";
 
+@font-face {
+  font-family: 'embroregular';
+  src: url('/fonts/embro-regular-webfont.woff2') format('woff2'),
+       url('/fonts/embro-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal
+}
+
 body { 
   background: linear-gradient(60deg, #e46d3e, #9198e5);
   background-size: cover;
-  text-align: center;
   width: 100%;
-  min-height:100vh
+  min-height: 100vh
+}
+
+h1 {
+  font-family: 'embroregular';
+  font-size: 42px;
 }
 
 #header-logo {
   background: url(/yapa-logo.png) no-repeat center center;
   background-size: cover;
   width: 152px
+}
+
+.footer {
+  background-color: hsl(0, 0%, 21%);
+  padding: 10px;
+  color: white;
 }

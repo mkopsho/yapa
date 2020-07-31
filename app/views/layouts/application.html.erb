@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Yapa</title>
+    <title>YAPA</title>
+    <%= favicon_link_tag asset_path('yapa-logo.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,7 +16,7 @@
         <div class="navbar-brand">
           <a id="header-logo" class="navbar-item" href="/home">
           </a>
-          <a role="button" class="navbar-burger" data-target="nav-menu">
+          <a role="button" data-target="nav-menu">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -49,9 +50,19 @@
     <% flash.each do |name, message| -%>
       <%= content_tag :div, message, class: name %>
     <% end %>
-  <div class="container">
-    <br>
-    <%= yield %>
+  <div class="section">
+    <div class="container">
+      <div class="wrapper">
+        <%= yield %>
+      </div>
+    </div>
   </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        YAPA by <a href="https://mkopsho.github.io">Michael Kopsho</a>.
+      </p>
+    </div>
+  </footer>
   </body>
 </html>
