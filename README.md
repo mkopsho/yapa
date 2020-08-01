@@ -14,7 +14,7 @@ bundle install
 
 We can now set up our database. To initialize the database, run:
 ```
-rake db:migrate
+rails db:migrate
 ```
 
 Now, we can start the web server. Run:
