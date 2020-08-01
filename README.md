@@ -1,4 +1,4 @@
-![yapa](./public/yapa-logo.png)
+![yapa](./public/yapa-readme.png)
 # YAPA
 Yet Another Productivity App.
 
@@ -24,5 +24,6 @@ rails -s
 This will start a web server that you can visit at [http://localhost:3000/](http://localhost:3000/). You're good to go!
 
 # Contributing
+Pull requests are not only welcome, they're encouraged! For major changes, please open an issue first to discuss what you would like to change.
 
 # License
