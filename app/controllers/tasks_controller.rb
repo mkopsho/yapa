@@ -23,9 +23,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    binding.pry
     @task = Task.new(task_params)
-    #@task.user_id = session[:user_id]
     if @task.save!
       redirect_to list_path(@task.list_id)
     else
