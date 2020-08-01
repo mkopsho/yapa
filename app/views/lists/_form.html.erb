@@ -20,7 +20,8 @@
       <%= tasks_attributes.text_field :summary %><br>
 
       <%= tasks_attributes.label :assignee %>
-      <%= tasks_attributes.text_field :assignee %><br><br>
+      <%= tasks_attributes.collection_select(:assignee, User.all, :username, :username, :prompt => true) %><br>
+    <br>
     <% end %>
   <% end %>
 

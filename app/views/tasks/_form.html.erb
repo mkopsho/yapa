@@ -4,9 +4,9 @@
 
   <%= form.label :assignee %>
   <% if @list %>
-    <%= form.collection_select(:user_id, @list.team.users, :id, :username) %><br>
+    <%= form.collection_select(:assignee, @list.team.users, :username, :username) %><br>
   <% else %>
-    <%= form.collection_select(:user_id, User.all, :id, :username, :prompt => true) %><br>
+    <%= form.collection_select(:assignee, User.all, :username, :username, :prompt => true) %><br>
   <% end %>
   <br>
 
