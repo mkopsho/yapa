@@ -23,6 +23,13 @@ rails -s
 ```
 This will start a web server that you can visit at [http://localhost:3000/](http://localhost:3000/). You're good to go!
 
+## Google Auth
+This project uses the [omniauth-google-oauth](https://github.com/zquestz/omniauth-google-oauth2) gem to log in with a Google account. If you want to use this, follow the instructions there to set up a Google developer project, OAuth consent screen, and gather credentials for your `.env` file. Assign the credentials to the appropriate variables in your `.env` file, e.g.,
+```
+GOOGLE_CLIENT_ID=<"Client ID" from Credentials>
+GOOGLE_CLIENT_SECRET=<"Client secret" from Credentials>
+```
+
 # Contributing
 Pull requests are not only welcome, they're encouraged! For major changes, please open an issue first to discuss what you would like to change.
 
