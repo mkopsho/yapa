@@ -1,24 +1,28 @@
-# README
+![yapa](./public/yapa-logo.png)
+# YAPA
+Yet Another Productivity App.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Use YAPA to build lists of tasks and manage them with your teams.
 
-Things you may want to cover:
+# Installation
+In order to get started, clone this repository.
 
-* Ruby version
+Navigate to the `yapa` directory and run:
+```
+bundle install
+```
 
-* System dependencies
+We can now set up our database. To initialize the database, run:
+```
+rake db:migrate
+```
 
-* Configuration
+Now, we can start the web server. Run:
+```
+rails -s
+```
+This will start a web server that you can visit at [http://localhost:3000/](http://localhost:3000/). You're good to go!
 
-* Database creation
+# Contributing
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# License
