@@ -27,3 +27,4 @@ This will start a web server that you can visit at [http://localhost:3000/](http
 Pull requests are not only welcome, they're encouraged! For major changes, please open an issue first to discuss what you would like to change.
 
 # License
+[MIT](./LICENSE)
