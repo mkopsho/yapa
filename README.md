@@ -33,5 +33,13 @@ GOOGLE_CLIENT_SECRET=<"Client secret" from Credentials>
 # Contributing
 Pull requests are not only welcome, they're encouraged! For major changes, please open an issue first to discuss what you would like to change.
 
+* * *
+
+# Demo and Blog
+
+Demo: https://www.youtube.com/watch?v=oFEo7F6YmHw
+
+Blog: https://kopsho.cafe/blog/rails-the-great-humbler.html
+
 # License
 [MIT](./LICENSE)
